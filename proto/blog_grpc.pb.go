@@ -19,7 +19,7 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// BlogServiceClient is the client API for BlogService service.
+// BlogServiceClient is the client API for BlogService server.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BlogServiceClient interface {
@@ -111,7 +111,7 @@ func (x *blogServiceListBlogsClient) Recv() (*Blog, error) {
 	return m, nil
 }
 
-// BlogServiceServer is the server API for BlogService service.
+// BlogServiceServer is the server API for BlogService server.
 // All implementations must embed UnimplementedBlogServiceServer
 // for forward compatibility
 type BlogServiceServer interface {
@@ -149,7 +149,7 @@ func (UnimplementedBlogServiceServer) ListBlogs(*emptypb.Empty, BlogService_List
 }
 func (UnimplementedBlogServiceServer) mustEmbedUnimplementedBlogServiceServer() {}
 
-// UnsafeBlogServiceServer may be embedded to opt out of forward compatibility for this service.
+// UnsafeBlogServiceServer may be embedded to opt out of forward compatibility for this server.
 // Use of this interface is not recommended, as added methods to BlogServiceServer will
 // result in compilation errors.
 type UnsafeBlogServiceServer interface {
@@ -253,7 +253,7 @@ func (x *blogServiceListBlogsServer) Send(m *Blog) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// BlogService_ServiceDesc is the grpc.ServiceDesc for BlogService service.
+// BlogService_ServiceDesc is the grpc.ServiceDesc for BlogService server.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BlogService_ServiceDesc = grpc.ServiceDesc{
