@@ -1,0 +1,32 @@
+syntax = 'proto3';
+
+package blog;
+
+option go_package = "github.com/ryantokmanmokmtm/gRPC-microservices-blogService/proto";
+
+import "google/protobuf/empty.proto";
+//Blog message information
+message Blog {
+  string id = 1;
+  string author_id = 2;
+  string title = 3;
+  string content = 4;
+}
+
+//A Blog article id
+message BlogID{
+  string id = 1;
+}
+
+service BlogService {
+  //receive a Blog and return the blog id
+  rpc CreateBlog (Blog) returns (BlogID);
+  //retrieve a blog info by id
+  rpc ReadBlog(BlogID) returns (Blog);
+  //Update a blog info and return nothing
+  rpc UpdateBlog(Blog) returns (google.protobuf.Empty);
+  //delete a blog by id
+  rpc DeleteBlog(BlogID) returns (google.protobuf.Empty);
+  //retrieve all blog information
+  rpc ListBlogs(google.protobuf.Empty) returns (stream Blog);
+}
