@@ -19,7 +19,7 @@ Services:
 git clone https://github.com/RyanTokManMokMTM/gRPC-microservices-blogService.git
 ```
 
-execute docker compose to run MongoDB on Your local machine
+run `docker-compose` command to start up MongoDB on Docker
 ```docker
 docker-compose -f blog.yml up
 ```
@@ -28,15 +28,17 @@ Build RPC Server`server/*.go`
 ```
 go build -o server
 ```
+
 Run executable file
 ```
 ./server
 ```
-
+  
 Build RPC Client `client/*.go`
 ```
 go build -o client
 ```
+
 Run executable file 
 ```
 ./client
